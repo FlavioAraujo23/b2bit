@@ -1,11 +1,13 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import App from '../App';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SignInPage from '../views/SignInPage/SignInPage';
 
 const AppRouter = () => {
   return (
-    <Router>
-      <Route path="/" Component={App} />
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" Component={SignInPage} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

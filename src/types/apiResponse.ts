@@ -1,4 +1,9 @@
-export type User = {
+export type UserCredentials = {
+  email: string;
+  password: string;
+};
+
+export type UserResponse = {
   user: {
     id: number;
     name: string;
