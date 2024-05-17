@@ -16,6 +16,13 @@ export const loginUser = async (
       JSON.stringify(userData),
       { headers }
     );
+
+    const { access, refresh } = response.data.tokens;
+
+    if (access && refresh) {
+      localStorage.setItem('accessToken', access);
+      localStorage.setItem('refreshToken', refresh);
+    }
     return response.data;
   } catch (error: unknown) {
     console.log(error);
