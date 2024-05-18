@@ -2,6 +2,7 @@ import React from 'react';
 import { UserProfileData } from '../../types/userProfile';
 import { fetchUserProfile } from '../../controllers/UserProfileController';
 import Input from '../../Components/Input';
+import LogoutButton from '../../Components/LogoutButton';
 
 const UserProfilePage: React.FC = () => {
   const [userProfile, setUserProfile] = React.useState<UserProfileData | null>(
@@ -50,7 +51,9 @@ const UserProfilePage: React.FC = () => {
     <div>
       {userProfile && (
         <div className="w-screen h-screen bg-[#F1F5F9]">
-          <header className="w-screen"> header</header>
+          <header className="w-screen h-[70px] flex justify-end items-center bg-white">
+            <LogoutButton />
+          </header>
           <main className=" h-4/5 flex justify-center items-center flex-col">
             <div className="shadow-2xl w-[358px] h-[315px] flex justify-around items-center flex-col rounded-[18px] bg-[#FDFDFD]">
               <header className=" flex items-center flex-col">
