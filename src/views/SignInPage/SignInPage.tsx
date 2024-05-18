@@ -41,13 +41,10 @@ const SignInPage = () => {
               navigate('/profile');
             } catch (error) {
               if (typeof error === 'string') {
-                // Se for uma string, provavelmente é a mensagem de erro
                 setErrors({ general: error });
               } else if (error instanceof Error) {
-                // Se for um objeto de erro, capturar a mensagem de erro
                 setErrors({ general: error.message });
               } else {
-                // Se for de outro tipo, definir uma mensagem de erro genérica
                 setErrors({ general: 'An unexpected error occurred' });
               }
             } finally {
