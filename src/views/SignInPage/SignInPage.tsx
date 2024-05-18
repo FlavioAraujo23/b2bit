@@ -57,7 +57,7 @@ const SignInPage = () => {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className="flex bg-[#f1f1f1] rounded-lg w-[385px] h-[54px] outline-none p-2"
+                className="flex bg-[#f1f1f1] rounded-lg w-[385px] h-[54px] outline-none p-2 mb-4"
               />
               <ErrorMessage
                 className="text-red-400"
@@ -82,7 +82,7 @@ const SignInPage = () => {
                 component="div"
               />
               {errors.general && (
-                <div className="text-red-400">{errors.general.message}</div>
+                <div className="text-red-400 error-message">{errors.general.message}</div>
               )}
               <button
                 type="submit"

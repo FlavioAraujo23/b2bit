@@ -27,7 +27,7 @@ export const loginUser = async (
   } catch (error: unknown) {
     console.log(error);
     if (error instanceof Error) {
-      throw new Error('Verifique suas credenciais');
+      throw new Error('Invalid credentials');
     }
   }
 };
