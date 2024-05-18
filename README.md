@@ -17,24 +17,24 @@ Este projeto é um sistema de autenticação e perfil de usuário desenvolvido c
 
 ## Estrutura de Pastas
 
-├── assets/
-├── components/
-│   ├── Input.tsx
-│   ├── LogoutButton.tsx
-├── controllers/
-│   ├── AuthController.ts
-│   ├── UserProfileController.ts
-├── routes/
-│   ├── AppRouter.tsx
-│   ├── ProtectedRoute.tsx
-├── types/
-│   ├── apiResponses.ts
-│   ├── userProfile.ts
-├── utils/
-│   ├── axiosInterceptors.ts
-├── views/
-│   ├── SignInPage.tsx
-│   ├── UserProfilePage.tsx
+├── assets/ <br>
+├── components/<br>
+│   ├── Input.tsx <br>
+│   ├── LogoutButton.tsx <br>
+├── controllers/ <br>
+│   ├── AuthController.ts <br>
+│   ├── UserProfileController.ts <br>
+├── routes/ <br>
+│   ├── AppRouter.tsx <br>
+│   ├── ProtectedRoute.tsx<br>
+├── types/ <br>
+│   ├── apiResponses.ts <br>
+│   ├── userProfile.ts <br>
+├── utils/<br> <br>
+│   ├── axiosInterceptors.ts <br>
+├── views/ <br>
+│   ├── SignInPage.tsx <br>
+│   ├── UserProfilePage.tsx <br>
 
 
 # Funcionalidades
