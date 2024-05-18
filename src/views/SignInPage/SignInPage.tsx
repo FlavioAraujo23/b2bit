@@ -13,7 +13,7 @@ const SignInPage = () => {
       <div className="shadow-2xl w-[438px] h-[534px] flex justify-around items-center flex-col rounded-[18px]">
         <img src={logo} alt="" className="w-[295px] h-[116px] mt-5" />
         <Formik
-          initialValues={{ email: '', password: '', general: '' }}
+          initialValues={{ email: '', password: '', general: '' || undefined }}
           validate={(values) => {
             const errors: {
               email?: string;
@@ -39,8 +39,8 @@ const SignInPage = () => {
             try {
               await loginUser(values);
               navigate('/profile');
-            } catch (error) {
-              if (error instanceof Error) setErrors({ general: error });
+            } catch (error: unknown) {
+              if(error as {message: string}) setErrors({ general: error });
             } finally {
               setSubmitting(false);
             }
