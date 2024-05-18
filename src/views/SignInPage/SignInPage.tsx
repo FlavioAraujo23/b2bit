@@ -39,8 +39,17 @@ const SignInPage = () => {
             try {
               await loginUser(values);
               navigate('/profile');
-            } catch (error: unknown) {
-              if(error as {message: string}) setErrors({ general: error });
+            } catch (error) {
+              if (typeof error === 'string') {
+                // Se for uma string, provavelmente é a mensagem de erro
+                setErrors({ general: error });
+              } else if (error instanceof Error) {
+                // Se for um objeto de erro, capturar a mensagem de erro
+                setErrors({ general: error.message });
+              } else {
+                // Se for de outro tipo, definir uma mensagem de erro genérica
+                setErrors({ general: 'An unexpected error occurred' });
+              }
             } finally {
               setSubmitting(false);
             }
@@ -81,8 +90,12 @@ const SignInPage = () => {
                 name="password"
                 component="div"
               />
-              {errors.general && (
-                <div className="text-red-400 error-message">{errors.general.message}</div>
+              {errors.general !== undefined && (
+                <div className="text-red-400 error-message">
+                  {typeof errors.general === 'string'
+                    ? errors.general
+                    : (errors.general as Error).message}
+                </div>
               )}
               <button
                 type="submit"
