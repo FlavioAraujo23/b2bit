@@ -1,7 +1,6 @@
-// axiosInstance.js
-import axios from 'axios';
+import axios, { AxiosHeaders, InternalAxiosRequestConfig } from 'axios';
 
-export const api = axios.create({
+const api = axios.create({
   baseURL: 'https://api.homologation.cliqdrive.com.br/auth/login/',
   headers: {
     Accept: 'application/json;version=v1_web',
@@ -23,4 +22,23 @@ api.interceptors.response.use(
   }
 );
 
-export default api;
+const apiProfileInfo = axios.create({
+  baseURL: 'https://api.homologation.cliqdrive.com.br/auth/profile/', // Ajuste a URL base conforme necessário
+});
+
+apiProfileInfo.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      config.headers = new AxiosHeaders({
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/json;version=v1_web',
+        'Content-Type': 'application/json',
+      });
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);

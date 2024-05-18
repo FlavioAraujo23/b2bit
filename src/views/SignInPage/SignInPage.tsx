@@ -4,11 +4,13 @@ import logo from '../../assets/B2BitLogo.png';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { loginUser } from '../../controllers/AuthController';
 import { UserCredentials } from '../../types/apiResponse';
+import { useNavigate } from 'react-router-dom';
 
 const SignInPage = () => {
+  const navigate = useNavigate();
   return (
-    <div className="w-screen h-screen flex items-center justify-center">
-      <div className="shadow-2xl w-[438px] h-[534px] flex justify-around items-center flex-col">
+    <div className="w-screen h-screen flex items-center justify-center bg-[#FAFAFA]">
+      <div className="shadow-2xl w-[438px] h-[534px] flex justify-around items-center flex-col rounded-[18px]">
         <img src={logo} alt="" className="w-[295px] h-[116px] mt-5" />
         <Formik
           initialValues={{ email: '', password: '', general: '' }}
@@ -36,6 +38,7 @@ const SignInPage = () => {
           ) => {
             try {
               await loginUser(values);
+              navigate('/profile');
             } catch (error) {
               if (error instanceof Error) setErrors({ general: error });
             } finally {
@@ -48,6 +51,8 @@ const SignInPage = () => {
               <Input
                 type="email"
                 name="email"
+                label="E-mail"
+                labelStyle="font-bold text-lg text-[#262626]"
                 placeholder="@gmail.com"
                 value={values.email}
                 onChange={handleChange}
@@ -64,10 +69,12 @@ const SignInPage = () => {
                 type="password"
                 name="password"
                 placeholder="****************"
+                label="Password"
+                labelStyle="font-bold text-lg text-[#262626]"
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className="flex bg-[#f1f1f1] rounded-lg w-[385px] h-[54px] outline-none p-2 mt-6"
+                className="flex bg-[#f1f1f1] rounded-lg w-[385px] h-[54px] outline-none p-2"
               />
               <ErrorMessage
                 className="text-red-400"
@@ -80,7 +87,7 @@ const SignInPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex items-center justify-center w-[385px] h-[54px] bg-[#02274F] rounded-lg text-white mt-9"
+                className="flex items-center justify-center w-[385px] h-[54px] bg-[#02274F] rounded-lg text-white font-bold mt-9"
               >
                 Sign in
               </button>
